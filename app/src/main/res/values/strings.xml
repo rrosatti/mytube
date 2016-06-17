@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyTube</string>
+    <string name="search">Search</string>
+    <string name="failed">Failed to initialize YouTube Player</string>
 </resources>
