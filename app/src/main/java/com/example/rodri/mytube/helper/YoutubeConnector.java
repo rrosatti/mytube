@@ -60,7 +60,7 @@ public class YoutubeConnector {
                 items.add(item);
             }
             return items;
-            
+
         } catch (IOException e) {
             Log.d("YC", "Could not search: " + e);
             return null;
