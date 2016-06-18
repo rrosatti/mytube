@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.rodri.mytube.R;
 import com.example.rodri.mytube.helper.YoutubeConnector;
+import com.example.rodri.mytube.ui.adapter.VideoItemAdapter;
 import com.example.rodri.mytube.video.VideoItem;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class SearchActivity extends Activity {
 
     private Handler handler;
     private List<VideoItem> searchResults;
+    private VideoItemAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,5 +70,10 @@ public class SearchActivity extends Activity {
                 });
             }
         }.start();
+    }
+
+    public void updateVideosFound() {
+        adapter = new VideoItemAdapter(this, 0, searchResults);
+        listVideosFound.setAdapter(adapter);
     }
 }
