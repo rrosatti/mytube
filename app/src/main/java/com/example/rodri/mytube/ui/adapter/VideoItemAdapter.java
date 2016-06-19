@@ -13,6 +13,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.example.rodri.mytube.R;
+import com.example.rodri.mytube.ui.activity.PlayerActivity;
 import com.example.rodri.mytube.video.VideoItem;
 import com.squareup.picasso.Picasso;
 
