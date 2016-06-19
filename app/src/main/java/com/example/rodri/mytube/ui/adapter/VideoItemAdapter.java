@@ -2,6 +2,7 @@ package com.example.rodri.mytube.ui.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,7 @@ public class VideoItemAdapter extends ArrayAdapter<VideoItem> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View v = convertView;
         ViewHolder holder = new ViewHolder();
         if (convertView == null) {
@@ -68,6 +69,15 @@ public class VideoItemAdapter extends ArrayAdapter<VideoItem> {
         Picasso.with(activity).load(videos.get(position).getThumbnailURL()).into(holder.displayThumbnail);
         holder.displayVideoTitle.setText(videos.get(position).getTitle());
         holder.displayVideoDescription.setText(videos.get(position).getDescription());
+
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, PlayerActivity.class);
+                intent.putExtra("VIDEO_ID", videos.get(position).getId());
+                activity.startActivity(intent);
+            }
+        });
 
         return v;
 
