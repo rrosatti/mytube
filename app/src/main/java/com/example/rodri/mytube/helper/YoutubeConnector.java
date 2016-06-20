@@ -25,6 +25,7 @@ public class YoutubeConnector {
     private YouTube youtube;
     private YouTube.Search.List query;
     public static final String KEY = "AIzaSyCXlfLgMdoGJa_rPGP-B0dR4HlcEnSrK2w";
+    public static final long NUMBER_OF_VIDEOS_RETURNED = 25;
 
     public YoutubeConnector(Context context) {
         youtube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), new HttpRequestInitializer() {
@@ -46,6 +47,7 @@ public class YoutubeConnector {
 
     public List<VideoItem> search(String keywords) {
         query.setQ(keywords);
+        query.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
         try {
             SearchListResponse response = query.execute();
             List<SearchResult> results = response.getItems();
