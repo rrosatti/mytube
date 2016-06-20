@@ -10,11 +10,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.rodri.mytube.R;
 import com.example.rodri.mytube.helper.YoutubeConnector;
 import com.example.rodri.mytube.ui.adapter.VideoItemAdapter;
+import com.example.rodri.mytube.util.UtilMethods;
 import com.example.rodri.mytube.video.VideoItem;
 
 import java.util.ArrayList;
@@ -57,7 +57,7 @@ public class SearchActivity extends Activity {
                 String data = etSearchInput.getText().toString();
                 if (!data.equals("")) {
                     searchOnYoutube(data);
-                    Toast.makeText(getApplicationContext(), "data: " + data, Toast.LENGTH_SHORT).show();
+                    UtilMethods.hideVirtualKeyboard(SearchActivity.this);
                 }
             }
         });
@@ -86,12 +86,10 @@ public class SearchActivity extends Activity {
                 });
             }
         }.start();
-        Toast.makeText(getApplicationContext(), "I was here searchOnYoutube()", Toast.LENGTH_SHORT).show();
     }
 
     public void updateVideosFound() {
         adapter = new VideoItemAdapter(this, 0, searchResults);
         listVideosFound.setAdapter(adapter);
-        Toast.makeText(getApplicationContext(), "I was here updateVideosFound()", Toast.LENGTH_SHORT).show();
     }
 }
