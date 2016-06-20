@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rodri.mytube.R;
 import com.example.rodri.mytube.helper.YoutubeConnector;
@@ -24,6 +27,7 @@ public class SearchActivity extends Activity {
 
     private EditText etSearchInput;
     private ListView listVideosFound;
+    private ImageView imgSearchIcon;
 
     private Handler handler;
     private List<VideoItem> searchResults;
@@ -47,11 +51,23 @@ public class SearchActivity extends Activity {
             }
         });
 
+        imgSearchIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String data = etSearchInput.getText().toString();
+                if (!data.equals("")) {
+                    searchOnYoutube(data);
+                    Toast.makeText(getApplicationContext(), "data: " + data, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
     public void initializeVariables() {
         etSearchInput = (EditText) findViewById(R.id.etSearchInput);
         listVideosFound = (ListView) findViewById(R.id.listVideosFound);
+        imgSearchIcon = (ImageView) findViewById(R.id.imgSearchButton);
 
         handler = new Handler();
         searchResults = new ArrayList<>();
@@ -70,10 +86,12 @@ public class SearchActivity extends Activity {
                 });
             }
         }.start();
+        Toast.makeText(getApplicationContext(), "I was here searchOnYoutube()", Toast.LENGTH_SHORT).show();
     }
 
     public void updateVideosFound() {
         adapter = new VideoItemAdapter(this, 0, searchResults);
         listVideosFound.setAdapter(adapter);
+        Toast.makeText(getApplicationContext(), "I was here updateVideosFound()", Toast.LENGTH_SHORT).show();
     }
 }

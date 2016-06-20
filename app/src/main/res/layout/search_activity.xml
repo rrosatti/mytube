@@ -3,12 +3,27 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/etSearchInput"
-        android:hint="@string/search"
-        android:singleLine="true"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/etSearchInput"
+            android:hint="@string/search"
+            android:singleLine="true"
+            android:layout_weight="6"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:id="@+id/imgSearchButton"
+            android:src="@drawable/search_icon"
+            android:layout_weight="1"
+            android:paddingTop="10dp"/>
+
+    </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"

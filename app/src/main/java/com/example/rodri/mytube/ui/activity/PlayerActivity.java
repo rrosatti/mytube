@@ -35,6 +35,8 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean restored) {
         if (!restored) {
             youTubePlayer.cueVideo(getIntent().getStringExtra("VIDEO_ID"));
+            Toast.makeText(getApplicationContext(), "Video id: "
+                    + getIntent().getStringExtra("VIDEO_ID"), Toast.LENGTH_SHORT).show();
         }
     }
 }
